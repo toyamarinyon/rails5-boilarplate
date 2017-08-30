@@ -1,11 +1,11 @@
-version: '2'
+version: '3'
 services:
   db:
     image: postgres
   rails:
     build: .
     volumes:
-      - ./:/myapp:cached
+      - .:/myapp:cached
     ports:
       - "3000:3000"
     depends_on:
@@ -14,7 +14,7 @@ services:
     build: .
     entrypoint: ./bin/webpack-dev-server
     volumes:
-      - ./:/myapp:cached
+      - .:/myapp:cached
     ports:
       - "8080:8080"
     depends_on:
