@@ -5,7 +5,7 @@ services:
   rails:
     build: .
     volumes:
-      - sync-volume:/myapp:nocopy
+      - ./:/myapp:cached
     ports:
       - "3000:3000"
     depends_on:
@@ -14,11 +14,8 @@ services:
     build: .
     entrypoint: ./bin/webpack-dev-server
     volumes:
-      - sync-volume:/myapp
+      - ./:/myapp:cached
     ports:
       - "8080:8080"
     depends_on:
       - db
-volumes:
-  sync-volume:
-    external: true
