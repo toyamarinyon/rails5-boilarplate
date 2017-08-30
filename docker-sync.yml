@@ -1,0 +1,6 @@
+version: '2'
+syncs:
+  sync-volume:
+    sync_excludes: ['.gitignore', '.git']
+    src: '.'
+    sync_strategy: 'unison'
