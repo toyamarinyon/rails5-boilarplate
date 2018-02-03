@@ -13,11 +13,11 @@ RUN  curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd
 
 RUN mkdir /myapp
 WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
-ADD package.json /myapp/package.json
-ADD yarn.lock /myapp/yarn.lock
+COPY package.json /myapp/package.json
+COPY yarn.lock /myapp/yarn.lock
 RUN yarn install
 ENTRYPOINT ["bundle", "exec", "rails"]
 CMD ["server", "-b", "0.0.0.0"]
